@@ -25,7 +25,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
      void prepare () {
          System.out.println("Before each: " + this);
          userService = new UserService();
-
      }
     @Test
     void userEmptyIfNoUsersAdded () {
