@@ -40,6 +40,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         userService.add(PETR);
         List<User> all = userService.getAll();
         assertEquals(2, all.size());
+
     }
     @Test
     void loginSuccessIfUserExists () {
@@ -47,6 +48,18 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         Optional<User> user = userService.login(IVAN.getUsername(), IVAN.getPassword());
         assertTrue(user.isPresent());
         user.ifPresent(user1 -> assertEquals(IVAN, user1));
+    }
+    @Test
+    void loginPasswordNotCorrect () {
+        userService.add(IVAN);
+        Optional<User> optionalUser = userService.login(IVAN.getUsername(), "oooooo");
+        assertTrue(optionalUser.isEmpty());
+    }
+    @Test
+    void loginNameNotCorrect () {
+        userService.add(IVAN);
+        Optional<User> optionalUser = userService.login("ppppp", IVAN.getPassword());
+        assertTrue(optionalUser.isEmpty());
     }
 
     @AfterEach
