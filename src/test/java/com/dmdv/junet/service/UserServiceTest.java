@@ -40,6 +40,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
         List<User> all = userService.getAll();
         assertEquals(2, all.size());
 
+
     }
     @Test
     void loginSuccessIfUserExists () {
