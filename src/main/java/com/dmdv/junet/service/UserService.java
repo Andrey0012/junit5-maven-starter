@@ -23,5 +23,6 @@ public class UserService {
         return users.stream().filter(user -> user.getUsername().equals(username))
                 .filter(user -> user.getPassword().equals(password)).findFirst();
     }
+
 }
 
